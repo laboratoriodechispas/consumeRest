@@ -18,7 +18,7 @@ class Routes {
      *
      */
     public function __construct(){
-        $this->service = 'http://localhost/Bonfire/public/index.php/webservice';
+        $this->service = 'http://192.168.1.20/Bonfire/public/index.php/webservice';
     }
 
 
