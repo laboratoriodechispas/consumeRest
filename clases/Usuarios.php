@@ -125,6 +125,16 @@ class Usuarios extends RestConsume{
         }//end else
     }//function login()
 
+    /*
+    * kill session
+    *
+    * mata la session que se ha creado
+    */
+    public function kill_session()
+    {
+        session_destroy();
+    }//function kill_session()
+
     /**
      * @return array|mixed
      * insertar usuario
