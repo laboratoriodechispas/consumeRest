@@ -45,6 +45,64 @@ class Eventos extends RestConsume{
         }//end else
     }//function get_eventos()
 
+    /**
+     * @return array|mixed
+     *
+     * obtiene todos los eventos actuales
+     * a partir de la fecha actual YYYY-MM-DD
+     */
+    public function get_eventos_now()
+    {
+        $settings = $this->inicialize("get_service_eventos_now");
+
+        if ($settings) //verifico que exista post y que la inicializacion de curl sea correcta
+        {
+
+            //aqui los parametros que enviaremos al webservice
+            curl_setopt($this->curl, CURLOPT_POSTFIELDS, "var= ");
+
+            $get = $this->finalize();
+            $obj = json_decode($get);
+
+            return $obj;
+            //return $curl_response;
+
+        }//end if ($_POST && $settings)
+        else
+        {
+            echo "error";
+        }//end else
+    }//end function get_eventos_now()
+
+
+    /**
+     * @return array|mixed
+     *
+     * obtiene todos los eventos pasados
+     * a partir de la fecha actual YYYY-MM-DD
+     */
+    public function get_eventos_old()
+    {
+        $settings = $this->inicialize("get_service_eventos_old");
+
+        if ($settings) //verifico que exista post y que la inicializacion de curl sea correcta
+        {
+
+            //aqui los parametros que enviaremos al webservice
+            curl_setopt($this->curl, CURLOPT_POSTFIELDS, "var= ");
+
+            $get = $this->finalize();
+            $obj = json_decode($get);
+
+            return $obj;
+            //return $curl_response;
+
+        }//end if ($_POST && $settings)
+        else
+        {
+            echo "error";
+        }//end else
+    }//end function get_eventos_now()
 
     /*
      * informacion del evento

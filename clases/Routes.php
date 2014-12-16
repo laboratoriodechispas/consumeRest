@@ -68,7 +68,12 @@ class Routes {
     public function get_service_find_eventos(){
         return $this->get_evento_service()."find_evento";
     }
-
+    public function get_service_eventos_now(){
+        return $this->get_evento_service()."get_eventos_now";
+    }
+    public function get_service_eventos_old(){
+        return $this->get_evento_service()."get_eventos_old";
+    }
 
 
     /***********************tipo eventos**********************/
