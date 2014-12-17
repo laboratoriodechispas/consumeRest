@@ -18,7 +18,7 @@ class Routes {
      *
      */
     public function __construct(){
-        $this->service = 'http://192.168.1.20/Bonfire/public/index.php/webservice';
+        $this->service = 'http://localhost/Bonfire/public/index.php/webservice';
     }
 
 
@@ -99,6 +99,26 @@ class Routes {
     }
 
 
+    /*************************Inscripciones*********************************/
+    public function get_service_get_inscripciones(){
+        return $this->get_inscripciones_service()."get_inscripcion";
+    }
+    public function get_service_add_inscripcion(){
+        return $this->get_inscripciones_service()."asociar_tipo_pago";
+    }
+    public function get_service_get_tipo_pago(){
+        return $this->get_inscripciones_service()."get_asociacion_pago";
+    }
+
+
+    /***********************preguntas/respuestas**************************/
+    public function get_service_get_pregunta(){
+        return $this->get_preguntas_service()."get_pregunta";
+    }
+    public function get_service_get_respuesta(){
+        return $this->get_respuestas_service()."get_pregunta";
+    }
+
 
     /****************************************************************************
      *                      funciones reservadas                                *
@@ -121,9 +141,42 @@ class Routes {
      * Funcion que devuelve la ruta general de eventos
      * del webservice
      */
-    private function get_evento_service(){
+    private function get_evento_service()
+    {
         return $this->service."/gestion_eventos/";
     }
 
+    /**
+     * @return string
+     * ruta inscripciones
+     *
+     * Funcion que devuelve la ruta general de inscripciones
+     */
+    private function get_inscripciones_service()
+    {
+        return $this->service."/gestion_inscripciones/";
+    }
+
+    /**
+     * @return string
+     * ruta preguntas
+     *
+     * Funcion que devuelve la ruta general de preguntas
+     */
+    private function get_preguntas_service()
+    {
+        return $this->service."/gestion_preguntas/";
+    }
+
+    /**
+     * @return string
+     * ruta respuestas
+     *
+     * Funcion que devuelve la ruta general de respuestas
+     */
+    private function get_respuestas_service()
+    {
+        return $this->service."/gestion_respuestas/";
+    }
 
 } 

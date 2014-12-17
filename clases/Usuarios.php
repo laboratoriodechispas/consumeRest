@@ -79,10 +79,10 @@ class Usuarios extends RestConsume{
 
 
     /*******************************************************************
-     *                                                                 *
-     *                funciones Ajax                                   *
-     *                                                                 *
-     *******************************************************************/
+     *                                                                  *
+     *                funciones Ajax                                    *
+     *                                                                  *
+     ********************************************************************/
 
     /*
      * login
@@ -106,14 +106,16 @@ class Usuarios extends RestConsume{
             curl_setopt($this->curl, CURLOPT_POSTFIELDS, "email=" . $email . "&password=" . $password);
 
             $get = $this->finalize();
-            $obj = json_decode($get);
+            $obj = json_decode($get,true);
 
             echo $get;
 
-            if($obj->response=="ok")
+            if($obj['response']=="ok")
             {
                 session_start();
-                $_SESSION['id_user'] = $obj->data->user->id;
+
+                $_SESSION['id_user'] = $obj['data']['user']['id'];
+
             }
 
             //return $curl_response;
@@ -126,13 +128,19 @@ class Usuarios extends RestConsume{
     }//function login()
 
     /*
-    * kill session
-    *
-    * mata la session que se ha creado
-    */
+   * kill session
+   *
+   * mata la session que se ha creado
+   */
     public function kill_session()
     {
-        session_destroy();
+        session_destroy()
+
+            $arr = array("response"=>'ok');
+            echo json_encode($arr);
+
+        
+
     }//function kill_session()
 
     /**
